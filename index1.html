@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src = "js/three.js"></script>
+    <script src = "js/OrbitControls.js"></script>
+    
+    <script>
+        const scene = new THREE.Scene();
+        scene.background = new  THREE.TextureLoader().load("img/sky.jpg");
+        // scene.background = new  THREE.Color("white")
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1 , 1000);
+
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        window.addEventListener("resize" , function(){
+            renderer.setSize(window.innerWidth , window.innerHeight);
+            camera.aspect = (window.innerWidth / window.innerHeight); 
+            camera.updateProjectionMatrix();
+        });
+
+        const controls = new THREE.OrbitControls(camera , renderer.domElement);
+        // controls.autoRotate = true;
+        // controls.enableDamping = true;
+        // controls.dampingFactor = 4; 
+        // controls.enablePan = false;
+        // controls.keyPanSpeed = 1000;
+        // controls.update();
+        
+        // const geometry = new THREE.BufferGeometry();
+        // const vertices= new Float32Array([
+        // -1.0, -1.0,  1.0
+	    //  1.0, -1.0,  1.0,
+	    //  1.0,  1.0,  1.0,
+
+	    //  1.0,  1.0,  1.0,
+	    // -1.0,  1.0,  1.0,
+	    // -1.0, -1.0,  1.0
+        //  ]);
+        // geometry.setAttribute("position", new THREE.BufferAttribute( vertices ,3));
+        // const geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
+        // const geometry = new THREE.SphereGeometry();
+        // const geometry = new THREE.IcosahedronGeometry();
+        // const geometry = new THREE.CylinderGeometry(0, 1, 2, 62);
+        // const geometry = new THREE.TorusGeometry( 1.25, 0.35, 21, 50 );
+        // const geometry = new THREE.TorusKnotGeometry(0.9, 0.3, 100, 50);
+        const frontgeometry = new THREE.PlaneGeometry(12, 4);
+        const backgeometry = new THREE.PlaneGeometry(12, 4,);
+        const rightgeometry = new THREE.PlaneGeometry(21, 4,);
+        const leftgeometry = new THREE.PlaneGeometry(21, 4,);
+        const rtrussgeometry = new THREE.BoxGeometry(6.6, 0.1,22);
+        const ltrussgeometry = new THREE.BoxGeometry(6.6, 0.1,22);
+        const groundgeometry = new THREE.PlaneGeometry(150, 150,);
+       
+
+    //     const material = [ 
+        
+    //     new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("image/1.png"), side : THREE.DoubleSide}),
+    //     new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("image/2.png"), side : THREE.DoubleSide}),
+    //     new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("image/3.png"), side : THREE.DoubleSide}),
+    //     new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("image/4.png"), side : THREE.DoubleSide}),
+    //     new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("image/5.png"), side : THREE.DoubleSide}),
+    //     new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("image/6.png"), side : THREE.DoubleSide}),
+
+    // ]
+        // const material = new THREE.MeshDepthMaterial();
+        // const material = new THREE.MeshNormalMaterial({color: 0x00FFFF});
+        // const material = new THREE.MeshPhongMaterial({color: 0x00FFFF});
+        // const material = new THREE.MeshStandardMaterial({color: "lightblue" , wireframe : false});
+        // const material = new THREE.MeshToonMaterial({color: 0x00FFFF});
+        const frontmaterial = new THREE.MeshPhongMaterial({color: "brown" , side: THREE.DoubleSide});
+        const frontwall = new THREE.Mesh(frontgeometry, frontmaterial);
+        scene.add(frontwall);
+        frontwall.position.set(0,2,10.5);
+
+        const backmaterial = new THREE.MeshPhongMaterial({color: "brown", side: THREE.DoubleSide});
+        const backwall = new THREE.Mesh(backgeometry, backmaterial);
+        scene.add(backwall);
+        backwall.position.set(0,2,-10.5);
+
+        const rightmaterial = new THREE.MeshPhongMaterial({color: "brown", side: THREE.DoubleSide});
+        const rightwall = new THREE.Mesh(rightgeometry, rightmaterial);
+        scene.add(rightwall);
+        rightwall.rotation.y = Math.PI/2;
+        rightwall.position.set(6,2,);
+
+        const leftmaterial = new THREE.MeshPhongMaterial({color: "brown", side: THREE.DoubleSide});
+        const leftwall = new THREE.Mesh(leftgeometry, leftmaterial);
+        scene.add(leftwall);
+        leftwall.rotation.y = Math.PI/2;
+        leftwall.position.set(-6,2,0);
+
+        const rtrussmaterial = new THREE.MeshPhongMaterial({color: "blue", side: THREE.DoubleSide});
+        const rtrusswall = new THREE.Mesh(rtrussgeometry, rtrussmaterial);
+        scene.add(rtrusswall);
+        rtrusswall.rotation.z = 0.408;
+        rtrusswall.position.set(-3,5.25,0);
+
+        const ltrussmaterial = new THREE.MeshPhongMaterial({color: "blue", side: THREE.DoubleSide});
+        const ltrusswall = new THREE.Mesh(ltrussgeometry, ltrussmaterial);
+        scene.add(ltrusswall);
+        ltrusswall.rotation.z = -0.408;
+        ltrusswall.position.set(3,5.25,0);
+
+        const groundmaterial = new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load("img/grass.jpg"), side: THREE.DoubleSide});
+        const ground = new THREE.Mesh(groundgeometry, groundmaterial);
+        scene.add(ground);
+        ground.rotation.x = Math.PI/2;
+        ground.position.set(0,0,0);
+
+        // const light = new THREE.HemisphereLightProbe(0xffffbb, 0x080820, 1 );
+        // light.position.set(50,50,50);
+        // scene.add(light);
+
+
+        const light = new THREE.AmbientLight("brown" , 1.45 );
+        light.position.set(50,50,30);
+        scene.add(light);
+
+        // const light1 = new THREE.PointLight("white" );
+        // light1.position.set(-10,15,50);
+        // scene.add(light1);
+
+        // const rectLight = new THREE.RectAreaLight( 0xffffff, 2,  20, 20 );
+        // rectLight.position.set( 5, 5, 0 );
+        // rectLight.lookAt( 0, 0, 0 );
+        // scene.add( rectLight );
+
+        const light2 = new THREE.DirectionalLight("white" , 3 );
+        light2.position.set(50,50,50);
+        light2.target.position.set(5,2,5);
+        scene.add(light2);
+        scene.add(light2.target);
+
+        camera.position.x = -10;
+        camera.position.y = 15;
+        camera.position.z = 30;
+        
+        const animate = function(){
+            requestAnimationFrame(animate);
+            // cube.rotation.x += 0.02;
+            // cube.rotation.y += 0.02;
+            // cube.rotation.z += 0.02;
+
+            controls.update();
+
+            renderer.render(scene ,camera);
+
+        };
+        animate();
+
+    </script>
+    <script src = "legs.js"></script>
+</body>
+</html>

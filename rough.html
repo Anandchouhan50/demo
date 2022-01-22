@@ -1,0 +1,116 @@
+
+        const scene = new THREE.Scene();
+        // scene.background = new THREE.TextureLoader().load( "img/background.png " );
+
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1 , 10000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // const geometry = new THREE.BoxGeometry(1000,1000,1000);
+        // // const geometry = new THREE.BoxGeometry(2,2,2);
+        // // const geometry = new THREE.SphereGeometry();
+
+
+        // material=[
+        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_ft.jpg " ) , side: THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_bk.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_up.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_dn.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_rt.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_lf.jpg " ) , side : THREE.DoubleSide})
+        // ];
+        // // const material = new THREE.MeshPhongMaterial({color: "white" ,wireframe : false});
+        // const cube = new THREE.Mesh(geometry, material);
+        // scene.add(cube);
+
+
+
+        // //horizontal legs
+        // var rightFrontGeometry = new THREE.BoxGeometry(20,0.01,20);
+        // rightFrontMaterial = new THREE.MeshBasicMaterial({color: "green" , side: THREE.DoubleSide});
+        // var rightFrontLeg = new THREE.Mesh(rightFrontGeometry, rightFrontMaterial);
+        // scene.add(rightFrontLeg);
+        // // rightFrontLeg.rotation.y = Math.PI/2;
+        // rightFrontLeg.position.set(0,0,0);
+
+        // var rightFrontGeometry = new THREE.BoxGeometry(0.2,4,0.2);
+        // rightFrontMaterial = new THREE.MeshPhongMaterial({color: "red" , side: THREE.DoubleSide});
+        // var rightFrontLeg = new THREE.Mesh(rightFrontGeometry, rightFrontMaterial);
+        // scene.add(rightFrontLeg);
+        // rightFrontLeg.position.set(3,2,6);
+
+        // var rightFrontGeometry = new THREE.BoxGeometry(0.2,4,0.2);
+        // rightFrontMaterial = new THREE.MeshPhongMaterial({color: "red" , side: THREE.DoubleSide});
+        // var rightFrontLeg = new THREE.Mesh(rightFrontGeometry, rightFrontMaterial);
+        // scene.add(rightFrontLeg);
+        // rightFrontLeg.position.set(-3,2,6);
+
+        // var rightFrontGeometry = new THREE.BoxGeometry(6,0.2,0.2);
+        // rightFrontMaterial = new THREE.MeshPhongMaterial({color: "red" , side: THREE.DoubleSide});
+        // var rightFrontLeg = new THREE.Mesh(rightFrontGeometry, rightFrontMaterial);
+        // scene.add(rightFrontLeg);
+        // rightFrontLeg.position.set(0,3.9,6);
+
+        // var rightFrontGeometry = new THREE.BoxGeometry(3.14,0.2,0.2);
+        // rightFrontMaterial = new THREE.MeshPhongMaterial({color: "red" , side: THREE.DoubleSide});
+        // var rightFrontLeg = new THREE.Mesh(rightFrontGeometry, rightFrontMaterial);
+        // scene.add(rightFrontLeg);
+        // rightFrontLeg.position.set(-1.5,4.29,6);
+        // rightFrontLeg.rotation.z = -56.31;
+
+        // var rightFrontGeometry = new THREE.BoxGeometry(3.14,0.2,0.2);
+        // rightFrontMaterial = new THREE.MeshPhongMaterial({color: "red" , side: THREE.DoubleSide});
+        // var rightFrontLeg = new THREE.Mesh(rightFrontGeometry, rightFrontMaterial);
+        // scene.add(rightFrontLeg);
+        // rightFrontLeg.position.set(1.5,4.29,6);
+        // rightFrontLeg.rotation.z = 56.31;
+
+        //Geometry
+        // const bitcoinGeometry = new THREE .SphereBufferGeometry(1,32,32);
+        const bitcoinGeometry = new THREE .BufferGeometry(1,32,32);
+        const count = 500;
+
+        const positions = new Float32Array(count*3);
+
+        for(let i = 0 ; i < count*3 ; i++ ){
+            positions[i] = Math.random()
+        }
+
+        bitcoinGeometry.setAttribute(
+            'positions',
+             new THREE.BufferAttribute(positions,3)    
+            
+        )
+
+
+        //Material
+        const bitcoinMaterial = new THREE.PointsMaterial();
+        bitcoinMaterial.size = 0.02;
+        bitcoinMaterial.sizeAttenuation = true;
+
+        //Partical
+        const coinParticals = new THREE.Points(bitcoinGeometry,bitcoinMaterial);
+        scene.add(coinParticals);
+
+
+        const light = new THREE.PointLight( "brown", 5, 100 );
+        light.position.set( 50, 50, 50 );
+        scene.add( light );
+
+        camera.position.z = 14;
+        camera.position.y = 5;
+        const animate = function(){
+            requestAnimationFrame(animate);
+                // cube.rotation.x += 0.01;
+				// cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+       
+    
