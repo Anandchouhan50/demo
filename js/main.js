@@ -44,19 +44,28 @@ const particalTexture = textureLoader.load('img/logo.jpeg')
 //Material
 const bitcoinMaterial = new THREE.PointsMaterial();
 bitcoinMaterial.size = 0.07;
-bitcoinMaterial.sizeAttenuation = true;
-// bitcoinMaterial.color = new THREE.Color("red")
+// bitcoinMaterial.sizeAttenuation = true;
+// bitcoinMaterial.color = new THREE.Color("pink")
 // bitcoinMaterial.map = particalTexture
 bitcoinMaterial.transparent = true
 bitcoinMaterial.alphaMap = particalTexture
-bitcoinMaterial.depthWrite = false
-bitcoinMaterial.blending = THREE.AdditiveBlending
+// bitcoinMaterial.depthWrite = false
+// bitcoinMaterial.depthTest = false
+// bitcoinMaterial.alphaTest = 0.001
+
+// bitcoinMaterial.blending = THREE.AdditiveBlending
 bitcoinMaterial.vertexColors = true
 
 //Partical
 const coinParticals = new THREE.Points(bitcoinGeometry,bitcoinMaterial);
 scene.add(coinParticals);
 
+
+// const cube = new THREE.Mesh(
+//     new THREE.BoxBufferGeometry(),
+//     new THREE.MeshBasicMaterial()
+// )
+// scene.add(cube);
 
 const light = new THREE.PointLight( "brown", 5, 100 );
 light.position.set( 50, 50, 50 );
@@ -70,7 +79,7 @@ const clock = new THREE.Clock()
 const animate = function(){
     requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime()
-    coinParticals.rotation.x =  elapsedTime*0.02
+    // coinParticals.rotation.x =  elapsedTime*0.02
         // cube.rotation.x += 0.01;
         // cube.rotation.y += 0.01;
     renderer.render(scene, camera);
