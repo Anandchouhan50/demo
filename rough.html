@@ -1,6 +1,63 @@
 
-        const scene = new THREE.Scene();
-        // scene.background = new THREE.TextureLoader().load( "img/background.png " );
+       onst lineGeometry = new THREE.BufferGeometry();
+       const tradeCount = 10000;
+       
+       const linePositions = new Float32Array(tradeCount*3);
+       const lineColors = new Float32Array(tradeCount*3);
+       
+       for(let i = 0 ; i < tradeCount*3 ; i++ ){
+           linePositions[i] = (Math.random()-0.5) *2
+           lineColors[i] = Math.random()
+       }
+       
+       lineGeometry.setAttribute(
+           'position',
+            new THREE.BufferAttribute(linePositions,3)    
+           
+       )
+       
+       lineGeometry.setAttribute(
+           'color',
+            new THREE.BufferAttribute(lineColors,3)    
+           
+       )
+       
+       
+       
+       
+       //texture
+       const lineTextureLoader = new THREE.TextureLoader()
+       const lineParticalTexture = lineTextureLoader.load('img/logo.jpeg')
+       
+       //Material
+       const lineMaterial = new THREE.PointsMaterial();
+       lineMaterial.size = 0.02;
+       // lineMaterial.sizeAttenuation = true;
+       // lineMaterial.color = new THREE.Color("pink")
+       // lineMaterial.map = lineParticalTexture
+       lineMaterial.transparent = true
+       lineMaterial.alphaMap = lineParticalTexture
+       // lineMaterial.depthWrite = false
+       // lineMaterial.depthTest = false
+       lineMaterial.alphaTest = 0.001
+       
+       // lineMaterial.blending = THREE.AdditiveBlending
+       // lineMaterial.vertexColors = true
+       
+       //Partical
+       const lineParticals = new THREE.Points(lineGeometry,lineMaterial);
+       scene.add(lineParticals);
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       const scene = new THREE.Scene();
+        // scene.background = new THREE.lineTextureLoader().load( "img/background.png " );
 
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1 , 10000);
@@ -14,12 +71,12 @@
 
 
         // material=[
-        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_ft.jpg " ) , side: THREE.DoubleSide}),
-        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_bk.jpg " ) , side : THREE.DoubleSide}),
-        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_up.jpg " ) , side : THREE.DoubleSide}),
-        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_dn.jpg " ) , side : THREE.DoubleSide}),
-        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_rt.jpg " ) , side : THREE.DoubleSide}),
-        // new THREE.MeshBasicMaterial({map :  new THREE.TextureLoader().load( "img/skybox/serenity_lf.jpg " ) , side : THREE.DoubleSide})
+        // new THREE.MeshBasicMaterial({map :  new THREE.lineTextureLoader().load( "img/skybox/serenity_ft.jpg " ) , side: THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.lineTextureLoader().load( "img/skybox/serenity_bk.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.lineTextureLoader().load( "img/skybox/serenity_up.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.lineTextureLoader().load( "img/skybox/serenity_dn.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.lineTextureLoader().load( "img/skybox/serenity_rt.jpg " ) , side : THREE.DoubleSide}),
+        // new THREE.MeshBasicMaterial({map :  new THREE.lineTextureLoader().load( "img/skybox/serenity_lf.jpg " ) , side : THREE.DoubleSide})
         // ];
         // // const material = new THREE.MeshPhongMaterial({color: "white" ,wireframe : false});
         // const cube = new THREE.Mesh(geometry, material);
@@ -68,31 +125,31 @@
         // rightFrontLeg.rotation.z = 56.31;
 
         //Geometry
-        // const bitcoinGeometry = new THREE .SphereBufferGeometry(1,32,32);
-        const bitcoinGeometry = new THREE .BufferGeometry(1,32,32);
-        const count = 500;
+        // const lineGeometry = new THREE .SphereBufferGeometry(1,32,32);
+        const lineGeometry = new THREE .BufferGeometry(1,32,32);
+        const tradeCount = 500;
 
-        const positions = new Float32Array(count*3);
+        const linePositions = new Float32Array(tradeCount*3);
 
-        for(let i = 0 ; i < count*3 ; i++ ){
-            positions[i] = Math.random()
+        for(let i = 0 ; i < tradeCount*3 ; i++ ){
+            linePositions[i] = Math.random()
         }
 
-        bitcoinGeometry.setAttribute(
-            'positions',
-             new THREE.BufferAttribute(positions,3)    
+        lineGeometry.setAttribute(
+            'linePositions',
+             new THREE.BufferAttribute(linePositions,3)    
             
         )
 
 
         //Material
-        const bitcoinMaterial = new THREE.PointsMaterial();
-        bitcoinMaterial.size = 0.02;
-        bitcoinMaterial.sizeAttenuation = true;
+        const lineMaterial = new THREE.PointsMaterial();
+        lineMaterial.size = 0.02;
+        lineMaterial.sizeAttenuation = true;
 
         //Partical
-        const coinParticals = new THREE.Points(bitcoinGeometry,bitcoinMaterial);
-        scene.add(coinParticals);
+        const lineParticals = new THREE.Points(lineGeometry,lineMaterial);
+        scene.add(lineParticals);
 
 
         const light = new THREE.PointLight( "brown", 5, 100 );
