@@ -25,7 +25,7 @@ const genrateLogoLine = () =>
     const tradeColors = new Float32Array(tradeCount*3);
     
     for(let i = 0 ; i < tradeCount*3 ; i++ ){
-        tradePositions[i] = (Math.random()-0.5) *200
+        tradePositions[i] = (Math.random()-0.5) *300
         tradeColors[i] = Math.random()
     }
     
@@ -46,26 +46,27 @@ const genrateLogoLine = () =>
     
     //texture
     const tradeTextureLoader = new THREE.TextureLoader()
-    const tradeParticalTexture = tradeTextureLoader.load('img/logo.jpeg')
+    const tradeParticalTexture = tradeTextureLoader.load('img/star.jpg')
     
     //Material
     const tradeCoinMaterial = new THREE.PointsMaterial();
-    tradeCoinMaterial.size = 0.2;
+    tradeCoinMaterial.size = 1;
     // tradeCoinMaterial.sizeAttenuation = true;
     tradeCoinMaterial.color = new THREE.Color("pink")
     // tradeCoinMaterial.map = tradeParticalTexture
     tradeCoinMaterial.transparent = true
     tradeCoinMaterial.alphaMap = tradeParticalTexture
-    // tradeCoinMaterial.depthWrite = false
+    tradeCoinMaterial.depthWrite = false
     // tradeCoinMaterial.depthTest = false
     tradeCoinMaterial.alphaTest = 0.001
     
-    // tradeCoinMaterial.blending = THREE.AdditiveBlending
+    tradeCoinMaterial.blending = THREE.AdditiveBlending
     // tradeCoinMaterial.vertexColors = true
     
     //Partical
     const tradeCoinParticals = new THREE.Points(tradeCoinGeometry,tradeCoinMaterial);
-    // scene.add(tradeCoinParticals);    
+    scene.add(tradeCoinParticals);    
+    console.log(tradeCoinParticals)
 
 
 
@@ -107,9 +108,9 @@ loader.load( 'js/gentilis_regular.typeface.json', function ( font ) {
 	const Geometry = new THREE.TextGeometry( '&', {
 		font: font,
 		size: 4.3,
-		height: 0.2,
+		height: 0.8,
 		curveSegments: 50,
-		bevelEnabled: true,
+		bevelEnabled: false,
 		bevelThickness: 0.4,
 		bevelSize: 0.1,
 		bevelOffset: 0.2,
@@ -122,7 +123,8 @@ loader.load( 'js/gentilis_regular.typeface.json', function ( font ) {
 
     npercent.position.x = 11.5
     npercent.position.y = -2
-    npercent.position.z = 0.5
+    npercent.position.z = 0.3
+    npercent.material.color.set("red")
     scene.add(npercent);
 
     } );
@@ -305,6 +307,7 @@ const animate = function(){
   
     // coinParticals.rotation.x =  elapsedTime*0.4
     // tradeCoinParticals.rotation.x =  elapsedTime*0.02
+    tradeCoinParticals.position.z = -100+(elapsedTime*4)
   
     // group.rotation.x =  elapsedTime*0.2
     // group.rotation.x =  elapsedTime*0.2
@@ -333,7 +336,7 @@ genrateLogoLine();
 // )
 // scene.add(cube);
 
-const light = new THREE.PointLight( "brown", 5, 100 );
+const light = new THREE.PointLight( "white", 5, 100 );
 light.position.set( 50, 50, 50 );
 scene.add( light );
 
