@@ -19,7 +19,7 @@ const genrateLogoLine = () =>
 
 
     const geometry = new THREE.SphereGeometry( 10000000, 500, 500 );
-    const texture = new THREE.TextureLoader().load( 'img/galaxy.jpg' );
+    const texture = new THREE.TextureLoader().load( 'img/red.png' );
     const material = new THREE.MeshBasicMaterial( { color: 0xffffff, map : texture ,side : THREE.DoubleSide} );
     const sphere = new THREE.Mesh( geometry, material );
     sphere.rotation.y = 2
@@ -137,7 +137,7 @@ loader.load( 'js/gentilis_regular.typeface.json', function ( font ) {
     npercent.position.x = 11.5
     npercent.position.y = -2
     npercent.position.z = 0.3
-    npercent.material.color.set("red")
+    npercent.material.color.set("white")
     scene.add(npercent);
 
     // } );
@@ -285,8 +285,8 @@ const particalTexture = textureLoader.load('img/ampersand.jpg')
 const bitcoinMaterial = new THREE.PointsMaterial();
 bitcoinMaterial.size = 0.09;
 // bitcoinMaterial.sizeAttenuation = true;
-bitcoinMaterial.color = new THREE.Color(0x5073f1)
-// bitcoinMaterial.color = new THREE.Color("white")
+// bitcoinMaterial.color = new THREE.Color(0x5073f1)
+bitcoinMaterial.color = new THREE.Color("white")
 // bitcoinMaterial.map = particalTexture
 bitcoinMaterial.transparent = true
 bitcoinMaterial.alphaMap = particalTexture
