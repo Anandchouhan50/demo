@@ -2,7 +2,7 @@ const scene = new THREE.Scene();
 // scene.background = new THREE.TextureLoader().load( "img/background.png " );
 
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1 , 10000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1 , 100000000);
 console.log(camera.position.z)
 camera.position.z = 20
 const renderer = new THREE.WebGLRenderer();
@@ -18,6 +18,18 @@ const genrateLogoLine = () =>
 
 
 
+    const geometry = new THREE.SphereGeometry( 10000000, 500, 500 );
+    const texture = new THREE.TextureLoader().load( 'img/galaxy.jpg' );
+    const material = new THREE.MeshBasicMaterial( { color: 0xffffff, map : texture ,side : THREE.DoubleSide} );
+    const sphere = new THREE.Mesh( geometry, material );
+    sphere.rotation.y = 2
+    sphere.rotation.x = 1
+    
+    scene.add( sphere );
+
+
+
+
     const tradeCoinGeometry = new THREE.BufferGeometry();
     const tradeCount = 50000;
     
@@ -25,7 +37,7 @@ const genrateLogoLine = () =>
     const tradeColors = new Float32Array(tradeCount*3);
     
     for(let i = 0 ; i < tradeCount*3 ; i++ ){
-        tradePositions[i] = (Math.random()-0.5) *300
+        tradePositions[i] = (Math.random()-0.5) *2000
         tradeColors[i] = Math.random()
     }
     
@@ -46,13 +58,14 @@ const genrateLogoLine = () =>
     
     //texture
     const tradeTextureLoader = new THREE.TextureLoader()
-    const tradeParticalTexture = tradeTextureLoader.load('img/star.jpg')
+    const tradeParticalTexture = tradeTextureLoader.load('img/ampersand.jpg')
     
     //Material
     const tradeCoinMaterial = new THREE.PointsMaterial();
-    tradeCoinMaterial.size = 1;
+    tradeCoinMaterial.size = 3;
     // tradeCoinMaterial.sizeAttenuation = true;
-    tradeCoinMaterial.color = new THREE.Color("pink")
+    // tradeCoinMaterial.color = new THREE.Color(0x00B0DE)
+    tradeCoinMaterial.color = new THREE.Color("white")
     // tradeCoinMaterial.map = tradeParticalTexture
     tradeCoinMaterial.transparent = true
     tradeCoinMaterial.alphaMap = tradeParticalTexture
@@ -72,31 +85,31 @@ const genrateLogoLine = () =>
 
 
 
-    class CustomSinCurve extends THREE.Curve {
+    // class CustomSinCurve extends THREE.Curve {
 
-        constructor( scale = 1 ) {
+    //     constructor( scale = 1 ) {
     
-            super();
+    //         super();
     
-            this.scale = scale;
+    //         this.scale = scale;
     
-        }
+    //     }
     
-        getPoint( t, optionalTarget = new THREE.Vector3() ) {
+    //     getPoint( t, optionalTarget = new THREE.Vector3() ) {
     
-            const tx = t * 3 - 1.5;
-            const ty = Math.sin( 2 * Math.PI * t );
-            const tz = 0;
+    //         const tx = t * 3 - 1.5;
+    //         const ty = Math.sin( 2 * Math.PI * t );
+    //         const tz = 0;
     
-            return optionalTarget.set( tx, ty, tz ).multiplyScalar( this.scale );
+    //         return optionalTarget.set( tx, ty, tz ).multiplyScalar( this.scale );
     
-        }
+    //     }
     
-    }
+    // }
 
 
 
-    const path = new CustomSinCurve( 3 );
+    // const path = new CustomSinCurve( 3 );
 // const bitcoinGeometry = new THREE.TubeGeometry(path,200, 1, 80, false );
 const bitcoinGeometry = new THREE.BufferGeometry();
 
@@ -127,7 +140,7 @@ loader.load( 'js/gentilis_regular.typeface.json', function ( font ) {
     npercent.material.color.set("red")
     scene.add(npercent);
 
-    } );
+    // } );
 
 const count = 200000;
 
@@ -266,18 +279,19 @@ bitcoinGeometry.setAttribute(
 
 //texture
 const textureLoader = new THREE.TextureLoader()
-const particalTexture = textureLoader.load('img/&logo.png')
+const particalTexture = textureLoader.load('img/ampersand.jpg')
 
 //Material
 const bitcoinMaterial = new THREE.PointsMaterial();
-bitcoinMaterial.size = 0.05;
+bitcoinMaterial.size = 0.09;
 // bitcoinMaterial.sizeAttenuation = true;
 bitcoinMaterial.color = new THREE.Color(0x5073f1)
+// bitcoinMaterial.color = new THREE.Color("white")
 // bitcoinMaterial.map = particalTexture
 bitcoinMaterial.transparent = true
 bitcoinMaterial.alphaMap = particalTexture
-// bitcoinMaterial.depthWrite = false
-// bitcoinMaterial.depthTest = false
+bitcoinMaterial.depthWrite = false
+// bitcoinMaterial.depthTest = true
 bitcoinMaterial.alphaTest = 0.001
 
 // bitcoinMaterial.blending = THREE.AdditiveBlending
@@ -291,6 +305,63 @@ group.add(coinParticals);
 
 scene.add(group)
 
+let windowHalfX = window.innerWidth / 2;
+let windowHalfY = window.innerHeight / 2;
+let mouseX = 0, mouseY = 0;
+
+document.body.addEventListener( 'pointermove', onPointerMove );
+
+//
+
+window.addEventListener( 'resize', onWindowResize );
+
+function onWindowResize() {
+
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+function onPointerMove( event ) {
+
+    if ( event.isPrimary === false ) return;
+
+    mouseX = event.clientX - windowHalfX;
+    mouseY = event.clientY - windowHalfY;
+
+}
+
+
+
+
+function render() {
+
+    const time = Date.now() * 0.00005;
+
+    camera.position.x = ( mouseX - camera.position.x ) * 0.0005;
+    camera.position.y = ( - mouseY - camera.position.y ) * 0.001;
+
+    camera.lookAt( scene.position );
+
+    // for ( let i = 0; i < scene.children.length; i ++ ) {
+
+    //     const object = scene.children[ i ];
+
+    //     if ( object instanceof THREE.Points ) {
+
+    //         object.rotation.y = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
+
+    //     }
+
+    // }
+
+}
+
 // coinParticals.rotation.x =  -Math.PI/6
 // // tradeCoinParticals.rotation.x =  -Math.PI/6
 // coinParticals.rotation.y =  -Math.PI/4
@@ -299,16 +370,23 @@ scene.add(group)
 // group.rotation.x =  -Math.PI/6
 // group.rotation.y =  -Math.PI/4
 
-
+tradeCoinParticals.position.y = -700
 const clock = new THREE.Clock()
 const animate = function(){
     requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime()
   
+    render();
     // coinParticals.rotation.x =  elapsedTime*0.4
     // tradeCoinParticals.rotation.x =  elapsedTime*0.02
-    tradeCoinParticals.position.z = -100+(elapsedTime*4)
-  
+//     tradeCoinParticals.position.z = -200
+//     if(tradeCoinParticals.position.z == -200){
+    tradeCoinParticals.rotation.x = (elapsedTime*0.03)
+//     }
+//   if(tradeCoinParticals.position.z > -180){
+//     tradeCoinParticals.position.z = -200
+//   }
+//   console.log(tradeCoinParticals.position.z)
     // group.rotation.x =  elapsedTime*0.2
     // group.rotation.x =  elapsedTime*0.2
         // cube.rotation.x += 0.01;
@@ -316,15 +394,21 @@ const animate = function(){
 
         // camera.position.z =20 -elapsedTime*0.5
 
-        // coinParticals.scale.z = 0.5+(elapsedTime*3)
-        // coinParticals.scale.x = 0.5+(elapsedTime*2)
-        // coinParticals.scale.y = 0.5+(elapsedTime*0.8)
-        // coinParticals.position.x = -(elapsedTime*20)
-        // coinParticals.position.z = -(elapsedTime*10)
+        // coinParticals.scale.z = 0.5+(elapsedTime*6)
+        // // coinParticals.scale.x = 0.5+(elapsedTime*2)
+        // coinParticals.scale.y = 0.5+(elapsedTime*1.5)
+        // // coinParticals.position.x = -(elapsedTime*30)
+        // // coinParticals.position.z = -(elapsedTime*10)
+
+        // npercent.position.x = 11.5+(elapsedTime*12)
+        // npercent.scale.x = -4+(elapsedTime*12)
+        // npercent.scale.y = -4+(elapsedTime*12)
 
     renderer.render(scene, camera);
 }
 animate();
+
+} );
 
 }
 
@@ -340,8 +424,8 @@ const light = new THREE.PointLight( "white", 5, 100 );
 light.position.set( 50, 50, 50 );
 scene.add( light );
 
-camera.position.z = 20;
-camera.position.y = 0;
+camera.position.z = 13;
+camera.position.y = 2;
 
 
 
