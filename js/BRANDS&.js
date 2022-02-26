@@ -161,33 +161,33 @@ for(let i = 0 ; i < count*3 ; i++ ){
         positions[i3+1] = (Math.random()*5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }else if(i<6000){
             positions[i3+0] = (Math.random()*2.5)+1
             positions[i3+1] = (Math.random())-2.5
             positions[i3+2] = (Math.random())
 
-            colors[i3+0] = 255
-            colors[i3+1] = 255
-            colors[i3+2] = 255 
+            // colors[i3+0] = 255
+            // colors[i3+1] = 255
+            // colors[i3+2] = 255 
         }else if(i<8000){
             positions[i3+0] = (Math.random())+2.5
             positions[i3+1] = (Math.random()*2.5)-1.5
             positions[i3+2] = (Math.random())
 
-            colors[i3+0] = 255
-            colors[i3+1] = 255
-            colors[i3+2] = 255 
+            // colors[i3+0] = 255
+            // colors[i3+1] = 255
+            // colors[i3+2] = 255 
         }else if(i<8500){
             positions[i3+0] = (Math.random())+1.5
             positions[i3+1] = (Math.random())
             positions[i3+2] = (Math.random())
 
-            colors[i3+0] = 255
-            colors[i3+1] = 255
-            colors[i3+2] = 255 
+            // colors[i3+0] = 255
+            // colors[i3+1] = 255
+            // colors[i3+2] = 255 
         }
 
     //r shape    
@@ -196,17 +196,17 @@ for(let i = 0 ; i < count*3 ; i++ ){
         positions[i3+1] = (Math.random()*3.5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }else if(i<11000){
         positions[i3+0] = (Math.random())+5.5
         positions[i3+1] = (Math.random())
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }
 
     //a shape
@@ -215,33 +215,33 @@ for(let i = 0 ; i < count*3 ; i++ ){
         positions[i3+1] = (Math.random()*3.5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0   
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0   
     }else if(i<15000){
         positions[i3+0] = (Math.random()*2.5)+8.5
         positions[i3+1] = (Math.random())
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }else if(i<17000){
         positions[i3+0] = (Math.random())+10
         positions[i3+1] = (Math.random()*2.5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }else if(i<17500){
         positions[i3+0] = (Math.random())+8.5
         positions[i3+1] = (Math.random())-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }
 
     //n shape
@@ -250,25 +250,25 @@ for(let i = 0 ; i < count*3 ; i++ ){
         positions[i3+1] = (Math.random()*3.5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }else if(i<21500){
         positions[i3+0] = (Math.random()*2.5)+13
         positions[i3+1] = (Math.random())
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }else if(i<23500){
         positions[i3+0] = (Math.random())+14.5
         positions[i3+1] = (Math.random()*2.5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }
 
     //d shape
@@ -277,33 +277,33 @@ for(let i = 0 ; i < count*3 ; i++ ){
         positions[i3+1] = (Math.random()*5)-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 0
-        colors[i3+2] = 0 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 0
+        // colors[i3+2] = 0 
     }else if(i<29500){
             positions[i3+0] = (Math.random()*2.5)+16.5
             positions[i3+1] = (Math.random())-2.5
             positions[i3+2] = (Math.random())
 
-            colors[i3+0] = 255
-            colors[i3+1] = 0
-            colors[i3+2] = 0 
+            // colors[i3+0] = 255
+            // colors[i3+1] = 0
+            // colors[i3+2] = 0 
         }else if(i<31500){
             positions[i3+0] = (Math.random())+16.5
             positions[i3+1] = (Math.random()*2.5)-1.5
             positions[i3+2] = (Math.random())
 
-            colors[i3+0] = 255
-            colors[i3+1] = 0
-            colors[i3+2] = 0 
+            // colors[i3+0] = 255
+            // colors[i3+1] = 0
+            // colors[i3+2] = 0 
         }else if(i<32000){
             positions[i3+0] = (Math.random())+17.5
             positions[i3+1] = (Math.random())
             positions[i3+2] = (Math.random())
 
-            colors[i3+0] = 255
-            colors[i3+1] = 0
-            colors[i3+2] = 0 
+            // colors[i3+0] = 255
+            // colors[i3+1] = 0
+            // colors[i3+2] = 0 
         }
 
     //s shape
@@ -312,41 +312,41 @@ for(let i = 0 ; i < count*3 ; i++ ){
         positions[i3+1] = (Math.random())
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }else if(i<35500){
         positions[i3+0] = (Math.random())+21
         positions[i3+1] = (Math.random()*1.25)-1.25
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }else if(i<37500){
         positions[i3+0] = (Math.random()*2.5)+22
         positions[i3+1] = (Math.random())-1.25
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }else if(i<38500){
         positions[i3+0] = (Math.random())+23.5
         positions[i3+1] = (Math.random()*1.25)-2.45
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }else if(i<39500){
         positions[i3+0] = (Math.random()*2.5)+21
         positions[i3+1] = (Math.random())-2.5
         positions[i3+2] = (Math.random())
 
-        colors[i3+0] = 255
-        colors[i3+1] = 255
-        colors[i3+2] = 255 
+        // colors[i3+0] = 255
+        // colors[i3+1] = 255
+        // colors[i3+2] = 255 
     }
 
     // colors[i3+0] = 1
@@ -385,9 +385,9 @@ const particalTexture = textureLoader.load('img/ampersand.jpeg')
 
 //Material
 const bitcoinMaterial = new THREE.PointsMaterial();
-bitcoinMaterial.size = 0.2;
+bitcoinMaterial.size = 0.18;
 // bitcoinMaterial.sizeAttenuation = true;
-// bitcoinMaterial.color = new THREE.Color(0x5073f1)
+bitcoinMaterial.color = new THREE.Color(0x5073f1)
 // bitcoinMaterial.color = new THREE.Color("red")
 // bitcoinMaterial.map = particalTexture
 bitcoinMaterial.transparent = true
@@ -396,8 +396,8 @@ bitcoinMaterial.depthWrite = false
 // bitcoinMaterial.depthTest = true
 bitcoinMaterial.alphaTest = 0.001
 
-// bitcoinMaterial.blending = THREE.AdditiveBlending
-bitcoinMaterial.vertexColors = true
+bitcoinMaterial.blending = THREE.AdditiveBlending
+// bitcoinMaterial.vertexColors = true
 
 console.log(bitcoinGeometry,"bitcoinGeometry")
 //Partical
