@@ -33,13 +33,13 @@ const genrateLogoLine = () =>
 
 
     const tradeCoinGeometry = new THREE.BufferGeometry();
-    const tradeCount = 50000;
+    const tradeCount = 10000;
     
     const tradePositions = new Float32Array(tradeCount*3);
     const tradeColors = new Float32Array(tradeCount*3);
     
     for(let i = 0 ; i < tradeCount*3 ; i++ ){
-        tradePositions[i] = (Math.random()-0.5) *2000
+        tradePositions[i] = (Math.random()-0.5) *2500
         tradeColors[i] = Math.random()
     }
     
@@ -60,11 +60,11 @@ const genrateLogoLine = () =>
     
     //texture
     const tradeTextureLoader = new THREE.TextureLoader()
-    const tradeParticalTexture = tradeTextureLoader.load('img/ampersand.jpg')
+    const tradeParticalTexture = tradeTextureLoader.load('img/ampersand2.jpeg')
     
     //Material
     const tradeCoinMaterial = new THREE.PointsMaterial();
-    tradeCoinMaterial.size = 3;
+    tradeCoinMaterial.size = 6;
     // tradeCoinMaterial.sizeAttenuation = true;
     // tradeCoinMaterial.color = new THREE.Color(0x00B0DE)
     tradeCoinMaterial.color = new THREE.Color("white")
@@ -381,11 +381,11 @@ bitcoinGeometry.setAttribute(
 
 //texture
 const textureLoader = new THREE.TextureLoader()
-const particalTexture = textureLoader.load('img/ampersand.jpg')
+const particalTexture = textureLoader.load('img/ampersand2.jpeg')
 
 //Material
 const bitcoinMaterial = new THREE.PointsMaterial();
-bitcoinMaterial.size = 0.08;
+bitcoinMaterial.size = 0.07;
 // bitcoinMaterial.sizeAttenuation = true;
 // bitcoinMaterial.color = new THREE.Color(0x5073f1)
 // bitcoinMaterial.color = new THREE.Color("red")
