@@ -60,11 +60,11 @@ const genrateLogoLine = () =>
     
     //texture
     const tradeTextureLoader = new THREE.TextureLoader()
-    const tradeParticalTexture = tradeTextureLoader.load('img/ampersand.jpeg')
+    const tradeParticalTexture = tradeTextureLoader.load('img/ampersand.jpg')
     
     //Material
     const tradeCoinMaterial = new THREE.PointsMaterial();
-    tradeCoinMaterial.size = 6;
+    tradeCoinMaterial.size = 3;
     // tradeCoinMaterial.sizeAttenuation = true;
     // tradeCoinMaterial.color = new THREE.Color(0x00B0DE)
     tradeCoinMaterial.color = new THREE.Color("white")
@@ -381,11 +381,11 @@ bitcoinGeometry.setAttribute(
 
 //texture
 const textureLoader = new THREE.TextureLoader()
-const particalTexture = textureLoader.load('img/ampersand.jpeg')
+const particalTexture = textureLoader.load('img/ampersand.jpg')
 
 //Material
 const bitcoinMaterial = new THREE.PointsMaterial();
-bitcoinMaterial.size = 0.18;
+bitcoinMaterial.size = 0.08;
 // bitcoinMaterial.sizeAttenuation = true;
 // bitcoinMaterial.color = new THREE.Color(0x5073f1)
 // bitcoinMaterial.color = new THREE.Color("red")
@@ -540,6 +540,8 @@ const animate = function(){
         // coinParticals.scale.y = 0.5+(elapsedTime*1.5)
         // // coinParticals.position.x = -(elapsedTime*30)
         // // coinParticals.position.z = -(elapsedTime*10)
+
+        // console.log(coinParticals.scale.y,coinParticals.scale.z);
 
         // npercent.position.x = 11.5+(elapsedTime*12)
         // npercent.scale.x = -4+(elapsedTime*12)
